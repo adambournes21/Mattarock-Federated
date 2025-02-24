@@ -1,0 +1,420 @@
+{
+  "colors": {
+    "standard": "#8884d8",
+    "poisoned": "#82ca9d",
+    "adversarial": "#ffc658",
+    "poisoned.2": "#a83232",
+    "poisoned.5": "#32a852",
+    "adversarial.2": "#d884d8",
+    "adversarial.5": "#84d8d8"
+  },
+  "dataKeyDisplayNames": {
+    "standard": "Standard Training",
+    "poisoned": "Poisoned Data Training",
+    "adversarial": "Adversarial Training",
+    "poisoned.2": "Poisoned Data Training 20%",
+    "poisoned.5": "Poisoned Data Training 50%",
+    "adversarial.2": "Adversarial Training 20%",
+    "adversarial.5": "Adversarial Training 50%"
+  },
+  "initialModels": [
+    {
+      "id": "Netflix",
+      "name": "Netflix",
+      "info": [
+        { "label": "Dataset", "value": "Kaggle Netflix Prize Data" },
+        { "label": "% Data Poisoned", "value": "20% and 50%" },
+        { "label": "Model Corretness Metric", "value": "Root Mean Squared Error (RMSE)" }
+      ],
+      "summary": "This data set trains quickly as shown by it's correctness after only 1 epoch, and it generalized well with 20% poisoned data, but not well with 50% poisoned data",
+"data": [
+        {
+          "epoch": 1,
+          "standard": 1.0462,
+          "poisoned.2": 1.1343,
+          "poisoned.5": 1.5436,
+          "adversarial.2": 1.0653,
+          "adversarial.5": 1.5582
+        },
+        {
+          "epoch": 2,
+          "standard": 1.0148,
+          "poisoned.2": 1.1225,
+          "poisoned.5": 1.541,
+          "adversarial.2": 1.0513,
+          "adversarial.5": 1.5563
+        },
+        {
+          "epoch": 3,
+          "standard": 0.9968,
+          "poisoned.2": 1.1076,
+          "poisoned.5": 1.5381,
+          "adversarial.2": 1.0458,
+          "adversarial.5": 1.5528
+        }
+      ],
+      "images": [
+        { "title": "Base Results", "imagePath": "/images/netflix/model1-results-base.png" },
+        { "title": "20% Poisoned Results", "imagePath": "/images/netflix/model1-results-poison2.png" },
+        { "title": "50% Poisoned Results", "imagePath": "/images/netflix/model1-results-poison5.png" },
+        { "title": "20% Poisoned Adverserial Learning Results", "imagePath": "/images/netflix/model1-results-adv-learning2.png" },
+        { "title": "50% Poisoned Adverserial Learning Results", "imagePath": "/images/netflix/model1-results-adv-learning5.png" }
+      ]
+    },
+    {
+      "id": "MNIST",
+      "name": "MNIST",
+      "info": [
+        { "label": "Dataset", "value": "MNIST number recognition dataset" },
+        { "label": "% Data Poisoned", "value": "10% and 25%" },
+        { "label": "Model Corretness Metric", "value": "Cross Entropy Loss" }
+      ],
+      "summary": "This data set trains quickly, is very redundant to poisoned data, and generalized very well in a federated setting.",
+      "data": [
+        {
+          "epoch": 1,
+          "centralized base accuracy": 90.41,
+          "centralized 10% poisoned accuracy": 86.73,
+          "centralized 25% poisoned accuracy": 85.98,
+          "centralized base loss": 0.3359,
+          "centralized 10% poisoned loss": 0.4278,
+          "centralized 25% poisoned loss": 0.6443,
+          "federated base accuracy": 96.4,
+          "federated base loss": 0.124,
+          "federated 10% poisoned accuracy": 96.87,
+          "federated 10% poisoned loss": 0.231,
+          "federated 25% poisoned accuracy": 96.35,
+          "federated 25% poisoned loss": 0.517
+        },
+        {
+          "epoch": 2,
+          "centralized base accuracy": 92.03,
+          "centralized 10% poisoned accuracy": 88.25,
+          "centralized 25% poisoned accuracy": 87.96,
+          "centralized base loss": 0.2809,
+          "centralized 10% poisoned loss": 0.3969,
+          "centralized 25% poisoned loss": 0.5968,
+          "federated base accuracy": 97.8,
+          "federated base loss": 0.07,
+          "federated 10% poisoned accuracy": 97.31,
+          "federated 10% poisoned loss": 0.226,
+          "federated 25% poisoned accuracy": 96.94,
+          "federated 25% poisoned loss": 0.483
+        },
+        {
+          "epoch": 3,
+          "centralized base accuracy": 92.66,
+          "centralized 10% poisoned accuracy": 88.94,
+          "centralized 25% poisoned accuracy": 88.47,
+          "centralized base loss": 0.2619,
+          "centralized 10% poisoned loss": 0.3726,
+          "centralized 25% poisoned loss": 0.5829,
+          "federated base accuracy": 98.02,
+          "federated base loss": 0.064,
+          "federated 10% poisoned accuracy": 97.47,
+          "federated 10% poisoned loss": 0.183,
+          "federated 25% poisoned accuracy": 97.32,
+          "federated 25% poisoned loss": 0.521
+        },
+        {
+          "epoch": 4,
+          "centralized base accuracy": 93.18,
+          "centralized 10% poisoned accuracy": 89.37,
+          "centralized 25% poisoned accuracy": 89.24,
+          "centralized base loss": 0.2394,
+          "centralized 10% poisoned loss": 0.3289,
+          "centralized 25% poisoned loss": 0.5121,
+          "federated base accuracy": 98.14,
+          "federated base loss": 0.058,
+          "federated 10% poisoned accuracy": 97.54,
+          "federated 10% poisoned loss": 0.223,
+          "federated 25% poisoned accuracy": 97.3,
+          "federated 25% poisoned loss": 0.433
+        },
+        {
+          "epoch": 5,
+          "centralized base accuracy": 93.61,
+          "centralized 10% poisoned accuracy": 89.89,
+          "centralized 25% poisoned accuracy": 89.31,
+          "centralized base loss": 0.2118,
+          "centralized 10% poisoned loss": 0.2851,
+          "centralized 25% poisoned loss": 0.4977,
+          "federated base accuracy": 98.33,
+          "federated base loss": 0.052,
+          "federated 10% poisoned accuracy": 97.74,
+          "federated 10% poisoned loss": 0.2,
+          "federated 25% poisoned accuracy": 97.37,
+          "federated 25% poisoned loss": 0.447
+        },
+        {
+          "epoch": 6,
+          "centralized base accuracy": 94.11,
+          "centralized 10% poisoned accuracy": 90.17,
+          "centralized 25% poisoned accuracy": 89.66,
+          "centralized base loss": 0.1958,
+          "centralized 10% poisoned loss": 0.2572,
+          "centralized 25% poisoned loss": 0.49,
+          "federated base accuracy": 98.23,
+          "federated base loss": 0.054,
+          "federated 10% poisoned accuracy": 97.67,
+          "federated 10% poisoned loss": 0.212,
+          "federated 25% poisoned accuracy": 97.3,
+          "federated 25% poisoned loss": 0.4
+        },
+        {
+          "epoch": 7,
+          "centralized base accuracy": 94.5,
+          "centralized 10% poisoned accuracy": 90.45,
+          "centralized 25% poisoned accuracy": 89.69,
+          "centralized base loss": 0.1857,
+          "centralized 10% poisoned loss": 0.2397,
+          "centralized 25% poisoned loss": 0.4464,
+          "federated base accuracy": 98.28,
+          "federated base loss": 0.051,
+          "federated 10% poisoned accuracy": 97.76,
+          "federated 10% poisoned loss": 0.178,
+          "federated 25% poisoned accuracy": 97.52,
+          "federated 25% poisoned loss": 0.422
+        },
+        {
+          "epoch": 8,
+          "centralized base accuracy": 95.04,
+          "centralized 10% poisoned accuracy": 90.54,
+          "centralized 25% poisoned accuracy": 89.92,
+          "centralized base loss": 0.1712,
+          "centralized 10% poisoned loss": 0.2081,
+          "centralized 25% poisoned loss": 0.4325,
+          "federated base accuracy": 98.41,
+          "federated base loss": 0.052,
+          "federated 10% poisoned accuracy": 97.77,
+          "federated 10% poisoned loss": 0.192,
+          "federated 25% poisoned accuracy": 97.31,
+          "federated 25% poisoned loss": 0.479
+        },
+        {
+          "epoch": 9,
+          "centralized base accuracy": 95.27,
+          "centralized 10% poisoned accuracy": 90.66,
+          "centralized 25% poisoned accuracy": 89.97,
+          "centralized base loss": 0.161,
+          "centralized 10% poisoned loss": 0.2766,
+          "centralized 25% poisoned loss": 0.4296,
+          "federated base accuracy": 98.38,
+          "federated base loss": 0.052,
+          "federated 10% poisoned accuracy": 97.74,
+          "federated 10% poisoned loss": 0.211,
+          "federated 25% poisoned accuracy": 97.35,
+          "federated 25% poisoned loss": 0.393
+        },
+        {
+          "epoch": 10,
+          "centralized base accuracy": 95.51,
+          "centralized 10% poisoned accuracy": 90.72,
+          "centralized 25% poisoned accuracy": 90.01,
+          "centralized base loss": 0.1498,
+          "centralized 10% poisoned loss": 0.2459,
+          "centralized 25% poisoned loss": 0.4193,
+          "federated base accuracy": 98.36,
+          "federated base loss": 0.053,
+          "federated 10% poisoned accuracy": 97.65,
+          "federated 10% poisoned loss": 0.179,
+          "federated 25% poisoned accuracy": 97.33,
+          "federated 25% poisoned loss": 0.476
+        },
+        {
+          "epoch": 11,
+          "centralized base accuracy": 95.99,
+          "centralized 10% poisoned accuracy": 90.78,
+          "centralized 25% poisoned accuracy": 90.21,
+          "centralized base loss": 0.1458,
+          "centralized 10% poisoned loss": 0.2241,
+          "centralized 25% poisoned loss": 0.4081,
+          "federated base accuracy": 98.29,
+          "federated base loss": 0.054,
+          "federated 10% poisoned accuracy": 97.67,
+          "federated 10% poisoned loss": 0.208,
+          "federated 25% poisoned accuracy": 97.2,
+          "federated 25% poisoned loss": 0.459
+        },
+        {
+          "epoch": 12,
+          "centralized base accuracy": 96.19,
+          "centralized 10% poisoned accuracy": 90.8,
+          "centralized 25% poisoned accuracy": 90.02,
+          "centralized base loss": 0.1292,
+          "centralized 10% poisoned loss": 0.2054,
+          "centralized 25% poisoned loss": 0.402,
+          "federated base accuracy": 98.48,
+          "federated base loss": 0.055,
+          "federated 10% poisoned accuracy": 97.65,
+          "federated 10% poisoned loss": 0.206,
+          "federated 25% poisoned accuracy": 97.09,
+          "federated 25% poisoned loss": 0.494
+        },
+        {
+          "epoch": 13,
+          "centralized base accuracy": 96.42,
+          "centralized 10% poisoned accuracy": 90.84,
+          "centralized 25% poisoned accuracy": 90.15,
+          "centralized base loss": 0.1207,
+          "centralized 10% poisoned loss": 0.1961,
+          "centralized 25% poisoned loss": 0.3968,
+          "federated base accuracy": 98.43,
+          "federated base loss": 0.056,
+          "federated 10% poisoned accuracy": 97.65,
+          "federated 10% poisoned loss": 0.244,
+          "federated 25% poisoned accuracy": 96.93,
+          "federated 25% poisoned loss": 0.477
+        },
+        {
+          "epoch": 14,
+          "centralized base accuracy": 96.61,
+          "centralized 10% poisoned accuracy": 90.95,
+          "centralized 25% poisoned accuracy": 90.25,
+          "centralized base loss": 0.1085,
+          "centralized 10% poisoned loss": 0.1843,
+          "centralized 25% poisoned loss": 0.3892,
+          "federated base accuracy": 98.48,
+          "federated base loss": 0.058,
+          "federated 10% poisoned accuracy": 97.58,
+          "federated 10% poisoned loss": 0.213,
+          "federated 25% poisoned accuracy": 97.22,
+          "federated 25% poisoned loss": 0.356
+        },
+        {
+          "epoch": 15,
+          "centralized base accuracy": 96.65,
+          "centralized 10% poisoned accuracy": 91.02,
+          "centralized 25% poisoned accuracy": 90.13,
+          "centralized base loss": 0.1014,
+          "centralized 10% poisoned loss": 0.1739,
+          "centralized 25% poisoned loss": 0.3803,
+          "federated base accuracy": 98.48,
+          "federated base loss": 0.057,
+          "federated 10% poisoned accuracy": 97.5,
+          "federated 10% poisoned loss": 0.218,
+          "federated 25% poisoned accuracy": 96.97,
+          "federated 25% poisoned loss": 0.469
+        },
+        {
+          "epoch": 16,
+          "centralized base accuracy": 97.05,
+          "centralized 10% poisoned accuracy": 91.05,
+          "centralized 25% poisoned accuracy": 90.28,
+          "centralized base loss": 0.0897,
+          "centralized 10% poisoned loss": 0.1536,
+          "centralized 25% poisoned loss": 0.3722,
+          "federated base accuracy": 98.44,
+          "federated base loss": 0.057,
+          "federated 10% poisoned accuracy": 97.26,
+          "federated 10% poisoned loss": 0.256,
+          "federated 25% poisoned accuracy": 97.09,
+          "federated 25% poisoned loss": 0.416
+        },
+        {
+          "epoch": 17,
+          "centralized base accuracy": 97.09,
+          "centralized 10% poisoned accuracy": 91.17,
+          "centralized 25% poisoned accuracy": 90.08,
+          "centralized base loss": 0.0837,
+          "centralized 10% poisoned loss": 0.1439,
+          "centralized 25% poisoned loss": 0.3623,
+          "federated base accuracy": 98.31,
+          "federated base loss": 0.06,
+          "federated 10% poisoned accuracy": 97.57,
+          "federated 10% poisoned loss": 0.193,
+          "federated 25% poisoned accuracy": 96.93,
+          "federated 25% poisoned loss": 0.412
+        },
+        {
+          "epoch": 18,
+          "centralized base accuracy": 97.09,
+          "centralized 10% poisoned accuracy": 91.15,
+          "centralized 25% poisoned accuracy": 90.31,
+          "centralized base loss": 0.0771,
+          "centralized 10% poisoned loss": 0.1261,
+          "centralized 25% poisoned loss": 0.355,
+          "federated base accuracy": 98.38,
+          "federated base loss": 0.06,
+          "federated 10% poisoned accuracy": 97.28,
+          "federated 10% poisoned loss": 0.233,
+          "federated 25% poisoned accuracy": 96.93,
+          "federated 25% poisoned loss": 0.44
+        },
+        {
+          "epoch": 19,
+          "centralized base accuracy": 97.34,
+          "centralized 10% poisoned accuracy": 91.08,
+          "centralized 25% poisoned accuracy": 90.2,
+          "centralized base loss": 0.0721,
+          "centralized 10% poisoned loss": 0.1194,
+          "centralized 25% poisoned loss": 0.3498,
+          "federated base accuracy": 98.43,
+          "federated base loss": 0.062,
+          "federated 10% poisoned accuracy": 97.28,
+          "federated 10% poisoned loss": 0.24,
+          "federated 25% poisoned accuracy": 96.81,
+          "federated 25% poisoned loss": 0.408
+        },
+        {
+          "epoch": 20,
+          "centralized base accuracy": 97.4,
+          "centralized 10% poisoned accuracy": 91.15,
+          "centralized 25% poisoned accuracy": 90.23,
+          "centralized base loss": 0.0653,
+          "centralized 10% poisoned loss": 0.1067,
+          "centralized 25% poisoned loss": 0.3444,
+          "federated base accuracy": 98.44,
+          "federated base loss": 0.061,
+          "federated 10% poisoned accuracy": 97.39,
+          "federated 10% poisoned loss": 0.209,
+          "federated 25% poisoned accuracy": 96.77,
+          "federated 25% poisoned loss": 0.453
+        }
+      ],
+      "images": [
+        { "title": "Base Centralized Results", "imagePath": "/images/MNIST-centralized/NewBaseGraph.png" },
+        { "title": "10% Centralized Poisoned Results", "imagePath": "/images/MNIST-centralized/New10pGraph.png" },
+        { "title": "25% Centralized Poisoned Results", "imagePath": "/images/MNIST-centralized/New25pGraph.png" },
+        { "title": "Base Federated Results", "imagePath": "/images/MNIST-federated/BaseFederated.png" },
+        { "title": "10% Federated Poisoned Results", "imagePath": "/images/MNIST-federated/10pFederated.png" },
+        { "title": "25% Federated Poisoned Results", "imagePath": "/images/MNIST-federated/25pFederated.png" }
+      ]
+    },
+    {
+      "id": "model3",
+      "name": "Model 3",
+      "info": [
+        { "label": "Name", "value": "Model 3" },
+        { "label": "% Data Poisoned", "value": "15%" },
+        { "label": "Delta Accuracy", "value": "0.07" }
+      ],
+      "summary": "This model focuses on robustness against high data poisoning.",
+      "data": [
+        {
+          "epoch": 1,
+          "standard": 1.0462,
+          "poisoned.2": 1.1343,
+          "poisoned.5": 1.5436
+        },
+        {
+          "epoch": 2,
+          "standard": 1.0148,
+          "poisoned.2": 1.1225,
+          "poisoned.5": 1.541
+        },
+        {
+          "epoch": 3,
+          "standard": 0.9968,
+          "poisoned.2": 1.1076,
+          "poisoned.5": 1.5381
+        }
+      ],
+      "images": [
+        { "title": "Model 3 Diagram", "imagePath": "/images/netflix/model3-diagram.png" },
+        { "title": "Model 3 Results", "imagePath": "/images/netflix/model3-results.png" },
+        { "title": "Additional Visualization", "imagePath": "/images/netflix/model3-additional.png" }
+      ]
+    }
+  ]
+}
