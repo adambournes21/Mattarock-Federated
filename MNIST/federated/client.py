@@ -7,6 +7,7 @@ import flwr as fl
 import random  # For poisoning
 from common import SimpleCNN, load_datasets, partition_dataset
 from torch.utils.data import DataLoader
+from sklearn.metrics import precision_score, recall_score, f1_score
 
 # Flower client class that uses the NumPyClient interface
 class MnistClient(fl.client.NumPyClient):
@@ -31,7 +32,7 @@ class MnistClient(fl.client.NumPyClient):
     def fit(self, parameters, config):
         self.set_parameters(parameters)
         self.model.train()
-        optimizer = optim.Adam(self.model.parameters(), lr=0.01)
+        optimizer = optim.SGD(self.model.parameters(), lr=0.03)
         # Local training loop
         for _ in range(self.local_epochs):
             for data, target in self.train_loader:
@@ -45,22 +46,35 @@ class MnistClient(fl.client.NumPyClient):
     def evaluate(self, parameters, config):
         self.set_parameters(parameters)
         self.model.eval()
-        loss_total = 0
-        correct = 0
-        total = 0
+        loss_total, correct, total = 0.0, 0, 0
+        preds_all, labels_all = [], []
+
         with torch.no_grad():
             for data, target in self.test_loader:
                 output = self.model(data)
-                loss = self.criterion(output, target)
-                loss_total += loss.item() * data.size(0)
-                _, predicted = torch.max(output, 1)
-                total += target.size(0)
-                correct += (predicted == target).sum().item()
-        loss_avg = loss_total / total
+                loss_total += self.criterion(output, target).item() * data.size(0)
+
+                preds = output.argmax(dim=1)
+                preds_all.extend(preds.cpu().numpy())
+                labels_all.extend(target.cpu().numpy())
+
+                total   += target.size(0)
+                correct += (preds == target).sum().item()
+
+        # ------------- metrics -------------
+        loss     = loss_total / total
         accuracy = correct / total
-        # Print the evaluation metrics
-        print(f"Test Loss: {loss_avg:.4f} | Test Accuracy: {accuracy * 100:.2f}%")
-        return loss_avg, len(self.test_loader.dataset), {"accuracy": accuracy}
+        precision = precision_score(labels_all, preds_all, average="macro", zero_division=0)
+        recall    = recall_score   (labels_all, preds_all, average="macro", zero_division=0)
+        f1        = f1_score       (labels_all, preds_all, average="macro", zero_division=0)
+
+        # everything goes back in the "metrics" dict
+        return loss, total, {
+            "accuracy":  accuracy,
+            "precision": precision,
+            "recall":    recall,
+            "f1":        f1,
+        }
 
 if __name__ == "__main__":
     import sys
@@ -73,19 +87,19 @@ if __name__ == "__main__":
     # Load datasets
     train_dataset, test_dataset = load_datasets()
     
-    # Poison 10% of the training labels
-    poison_fraction = 0.25
-    num_poisoned = int(poison_fraction * len(train_dataset))
-    all_indices = list(range(len(train_dataset)))
-    poisoned_indices = random.sample(all_indices, num_poisoned)
-    for idx in poisoned_indices:
-        # Overwrite the label with a random digit between 0 and 9
-        train_dataset.targets[idx] = random.randint(0, 9)
-    
     # Partition the train dataset for this client
     num_clients = 5
     train_subset = partition_dataset(train_dataset, num_clients, client_id)
 
+    # Poison x% of the training labels
+    poison_fraction = 0
+    # replace labels in-place
+    # Poison exactly poison_fraction of THIS client’s local examples
+    subset_indices = train_subset.indices
+    k = int(poison_fraction * len(subset_indices))
+    for idx in random.sample(subset_indices, k):
+        train_dataset.targets[idx] = random.randint(0, 9)
+    
     train_loader = DataLoader(train_subset, batch_size=64, shuffle=True)
     test_loader = DataLoader(test_dataset, batch_size=64)
     

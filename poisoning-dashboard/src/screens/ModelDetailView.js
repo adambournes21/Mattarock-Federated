@@ -58,6 +58,9 @@ const ModelDetailView = () => {
             <ToggleButton value="loss" aria-label="loss">
               Cross Entropy Loss
             </ToggleButton>
+            <ToggleButton value="precision" aria-label="precision">Precision</ToggleButton>
+            <ToggleButton value="recall" aria-label="recall">Recall</ToggleButton>
+            <ToggleButton value="f1" aria-label="f1-score">F1‑Score</ToggleButton>
           </ToggleButtonGroup>
           <Grid container spacing={4}>
             <Grid item xs={12} md={8}>

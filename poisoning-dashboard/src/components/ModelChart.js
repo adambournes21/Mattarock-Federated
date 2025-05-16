@@ -8,89 +8,106 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
-  Label
+  Label,
 } from 'recharts';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import modelData from '../data/models.json';
 
-const { colors, dataKeyDisplayNames } = modelData;
+const { colors: jsonColors, dataKeyDisplayNames } = modelData;
+
+/* ────────── helper: map data‑key -> poison‑level colour ────────── */
+const poisonPalette = {
+  '0%':  '#2ecc71', // green
+  '10%': '#ffcc00', // yellow
+  '25%': '#e74c3c', // red
+};
+
+/** Return the colour for a given metric key. */
+const colourFor = (key) => {
+  if (key.includes('10%')) return poisonPalette['10%'];
+  if (key.includes('0%'))  return poisonPalette['0%'];
+  if (key.includes('25%')) return poisonPalette['25%'];
+  return jsonColors[key] || '#000';          // fallback
+};
+
+/* ────────── axis labels per metric type ────────── */
+const metricLabels = {
+  accuracy:  'Accuracy (%)',
+  loss:      'Cross‑Entropy Loss',
+  precision: 'Precision (%)',
+  recall:    'Recall (%)',
+  f1:        'F1‑Score (%)',
+};
 
 const ModelChart = ({ data, learningType, setLearningType, chartType }) => {
-  // Get all keys except 'epoch'
-  let dataKeys = Object.keys(data[0]).filter(key => key !== 'epoch');
+  if (!data?.length) return null;
 
-  // Filter keys based on chartType (accuracy or loss)
+  /* ────────── choose which series to plot ────────── */
+  let keys = Object.keys(data[0]).filter((k) => k !== 'epoch');
+
+  // filter by metric tab (accuracy / loss / precision / recall / f1)
   if (chartType) {
-    const filteredChart = dataKeys.filter(key => key.toLowerCase().includes(chartType));
-    if (filteredChart.length > 0) {
-      dataKeys = filteredChart;
-    }
+    const byMetric = keys.filter((k) => k.toLowerCase().includes(chartType));
+    if (byMetric.length) keys = byMetric;
   }
 
-  // Further filter keys based on learningType (centralized or federated)
-  if (learningType) {
-    const filteredLearning = dataKeys.filter(key => key.toLowerCase().includes(learningType));
-    if (filteredLearning.length > 0) {
-      dataKeys = filteredLearning;
-    }
+  // filter by learning type (centralized / federated)
+  if (learningType && learningType !== 'both') {
+    const byLearn = keys.filter((k) => k.toLowerCase().includes(learningType));
+    if (byLearn.length) keys = byLearn;
   }
 
-  // Fallback to all keys (except epoch) if filtering yields no results.
-  if (dataKeys.length === 0) {
-    dataKeys = Object.keys(data[0]).filter(key => key !== 'epoch');
-  }
+  // fallback: all keys if nothing matched
+  if (!keys.length) keys = Object.keys(data[0]).filter((k) => k !== 'epoch');
 
-  const lines = dataKeys.map(dataKey => ({
-    dataKey,
-    name: dataKeyDisplayNames[dataKey] || dataKey,
-    color: colors[dataKey] || '#000'
+  const lines = keys.map((k) => ({
+    dataKey: k,
+    name: dataKeyDisplayNames[k] || k,
+    color: colourFor(k),
   }));
 
-  const yAxisLabel = chartType === 'accuracy' ? 'Accuracy (%)' : 'Cross Entropy Loss';
-
+  /* ────────── render ────────── */
   return (
     <>
       {learningType && setLearningType && (
         <ToggleButtonGroup
           value={learningType}
           exclusive
-          onChange={(event, newType) => {
-            if (newType !== null) {
-              setLearningType(newType);
-            }
-          }}
+          onChange={(_, v) => v && setLearningType(v)}
           aria-label="learning type"
-          style={{ marginBottom: '16px' }}
+          sx={{ mb: 2 }}
         >
-          <ToggleButton value="centralized" aria-label="centralized learning">
-            Centralized
-          </ToggleButton>
-          <ToggleButton value="federated" aria-label="federated learning">
-            Federated
-          </ToggleButton>
+          <ToggleButton value="centralized">Centralized</ToggleButton>
+          <ToggleButton value="federated">Federated</ToggleButton>
+          <ToggleButton value="both">Both</ToggleButton>
         </ToggleButtonGroup>
       )}
+
       <div style={{ height: 400 }}>
         <ResponsiveContainer width="100%" height="100%">
           <LineChart data={data} margin={{ top: 10, right: 20, left: 0, bottom: 10 }}>
             <XAxis dataKey="epoch">
               <Label value="Epochs" position="insideBottom" offset={-5} />
             </XAxis>
-            <YAxis label={{ value: yAxisLabel, angle: -90, position: 'insideLeft' }} />
-            <Tooltip />
-            <Legend
-              verticalAlign="bottom"
-              layout="horizontal"
-              align="center"
-              wrapperStyle={{ fontSize: '0.8em', bottom: -5 }}
+
+            <YAxis
+              label={{
+                value: metricLabels[chartType] || 'Metric',
+                angle: -90,
+                position: 'insideLeft',
+              }}
             />
-            {lines.map((line, index) => (
+
+            <Tooltip />
+            <Legend verticalAlign="bottom" wrapperStyle={{ fontSize: '0.8em', bottom: -5 }} />
+
+            {lines.map(({ dataKey, color, name }) => (
               <Line
-                key={index}
+                key={dataKey}
                 type="monotone"
-                dataKey={line.dataKey}
-                stroke={line.color}
-                name={line.name}
+                dataKey={dataKey}
+                stroke={color}
+                name={name}
                 dot={{ r: 4 }}
                 activeDot={{ r: 6 }}
               />

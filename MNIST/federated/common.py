@@ -30,7 +30,6 @@ def load_datasets():
 def partition_dataset(dataset, num_clients, client_id):
     total_size = len(dataset)
 
-
     # part_size = total_size
     # start = 0
     part_size = total_size // num_clients

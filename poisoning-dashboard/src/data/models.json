@@ -19,402 +19,852 @@
   },
   "initialModels": [
     {
-      "id": "Netflix",
-      "name": "Netflix",
-      "info": [
-        { "label": "Dataset", "value": "Kaggle Netflix Prize Data" },
-        { "label": "% Data Poisoned", "value": "20% and 50%" },
-        { "label": "Model Corretness Metric", "value": "Root Mean Squared Error (RMSE)" }
-      ],
-      "summary": "This data set trains quickly as shown by it's correctness after only 1 epoch, and it generalized well with 20% poisoned data, but not well with 50% poisoned data",
-"data": [
-        {
-          "epoch": 1,
-          "standard": 1.0462,
-          "poisoned.2": 1.1343,
-          "poisoned.5": 1.5436,
-          "adversarial.2": 1.0653,
-          "adversarial.5": 1.5582
-        },
-        {
-          "epoch": 2,
-          "standard": 1.0148,
-          "poisoned.2": 1.1225,
-          "poisoned.5": 1.541,
-          "adversarial.2": 1.0513,
-          "adversarial.5": 1.5563
-        },
-        {
-          "epoch": 3,
-          "standard": 0.9968,
-          "poisoned.2": 1.1076,
-          "poisoned.5": 1.5381,
-          "adversarial.2": 1.0458,
-          "adversarial.5": 1.5528
-        }
-      ],
-      "images": [
-        { "title": "Base Results", "imagePath": "/images/netflix/model1-results-base.png" },
-        { "title": "20% Poisoned Results", "imagePath": "/images/netflix/model1-results-poison2.png" },
-        { "title": "50% Poisoned Results", "imagePath": "/images/netflix/model1-results-poison5.png" },
-        { "title": "20% Poisoned Adverserial Learning Results", "imagePath": "/images/netflix/model1-results-adv-learning2.png" },
-        { "title": "50% Poisoned Adverserial Learning Results", "imagePath": "/images/netflix/model1-results-adv-learning5.png" }
-      ]
-    },
-    {
       "id": "MNIST",
       "name": "MNIST",
       "info": [
         { "label": "Dataset", "value": "MNIST number recognition dataset" },
-        { "label": "% Data Poisoned", "value": "10% and 25%" },
-        { "label": "Model Corretness Metric", "value": "Cross Entropy Loss" }
+        { "label": "% Data Poisoned", "value": "0%, 10%, and 25%" },
+        { "label": "Metrics", "value": "Accuracy, Cross Entropy Loss, Precision, Recall, Macro-Averaged F1" },
+        { "label": "Task", "value": "Training a simple CNN on the MNIST dataset"},
+        { "label": "Summary", "value": "This data set trains quickly, is very redundant to poisoned data, and generalized very well in a federated setting."}
       ],
-      "summary": "This data set trains quickly, is very redundant to poisoned data, and generalized very well in a federated setting.",
       "data": [
-        {
-          "epoch": 1,
-          "centralized base accuracy": 90.41,
-          "centralized 10% poisoned accuracy": 86.73,
-          "centralized 25% poisoned accuracy": 85.98,
-          "centralized base loss": 0.3359,
-          "centralized 10% poisoned loss": 0.4278,
-          "centralized 25% poisoned loss": 0.6443,
-          "federated base accuracy": 96.4,
-          "federated base loss": 0.124,
-          "federated 10% poisoned accuracy": 96.87,
-          "federated 10% poisoned loss": 0.231,
-          "federated 25% poisoned accuracy": 96.35,
-          "federated 25% poisoned loss": 0.517
-        },
-        {
-          "epoch": 2,
-          "centralized base accuracy": 92.03,
-          "centralized 10% poisoned accuracy": 88.25,
-          "centralized 25% poisoned accuracy": 87.96,
-          "centralized base loss": 0.2809,
-          "centralized 10% poisoned loss": 0.3969,
-          "centralized 25% poisoned loss": 0.5968,
-          "federated base accuracy": 97.8,
-          "federated base loss": 0.07,
-          "federated 10% poisoned accuracy": 97.31,
-          "federated 10% poisoned loss": 0.226,
-          "federated 25% poisoned accuracy": 96.94,
-          "federated 25% poisoned loss": 0.483
-        },
-        {
-          "epoch": 3,
-          "centralized base accuracy": 92.66,
-          "centralized 10% poisoned accuracy": 88.94,
-          "centralized 25% poisoned accuracy": 88.47,
-          "centralized base loss": 0.2619,
-          "centralized 10% poisoned loss": 0.3726,
-          "centralized 25% poisoned loss": 0.5829,
-          "federated base accuracy": 98.02,
-          "federated base loss": 0.064,
-          "federated 10% poisoned accuracy": 97.47,
-          "federated 10% poisoned loss": 0.183,
-          "federated 25% poisoned accuracy": 97.32,
-          "federated 25% poisoned loss": 0.521
-        },
-        {
-          "epoch": 4,
-          "centralized base accuracy": 93.18,
-          "centralized 10% poisoned accuracy": 89.37,
-          "centralized 25% poisoned accuracy": 89.24,
-          "centralized base loss": 0.2394,
-          "centralized 10% poisoned loss": 0.3289,
-          "centralized 25% poisoned loss": 0.5121,
-          "federated base accuracy": 98.14,
-          "federated base loss": 0.058,
-          "federated 10% poisoned accuracy": 97.54,
-          "federated 10% poisoned loss": 0.223,
-          "federated 25% poisoned accuracy": 97.3,
-          "federated 25% poisoned loss": 0.433
-        },
-        {
-          "epoch": 5,
-          "centralized base accuracy": 93.61,
-          "centralized 10% poisoned accuracy": 89.89,
-          "centralized 25% poisoned accuracy": 89.31,
-          "centralized base loss": 0.2118,
-          "centralized 10% poisoned loss": 0.2851,
-          "centralized 25% poisoned loss": 0.4977,
-          "federated base accuracy": 98.33,
-          "federated base loss": 0.052,
-          "federated 10% poisoned accuracy": 97.74,
-          "federated 10% poisoned loss": 0.2,
-          "federated 25% poisoned accuracy": 97.37,
-          "federated 25% poisoned loss": 0.447
-        },
-        {
-          "epoch": 6,
-          "centralized base accuracy": 94.11,
-          "centralized 10% poisoned accuracy": 90.17,
-          "centralized 25% poisoned accuracy": 89.66,
-          "centralized base loss": 0.1958,
-          "centralized 10% poisoned loss": 0.2572,
-          "centralized 25% poisoned loss": 0.49,
-          "federated base accuracy": 98.23,
-          "federated base loss": 0.054,
-          "federated 10% poisoned accuracy": 97.67,
-          "federated 10% poisoned loss": 0.212,
-          "federated 25% poisoned accuracy": 97.3,
-          "federated 25% poisoned loss": 0.4
-        },
-        {
-          "epoch": 7,
-          "centralized base accuracy": 94.5,
-          "centralized 10% poisoned accuracy": 90.45,
-          "centralized 25% poisoned accuracy": 89.69,
-          "centralized base loss": 0.1857,
-          "centralized 10% poisoned loss": 0.2397,
-          "centralized 25% poisoned loss": 0.4464,
-          "federated base accuracy": 98.28,
-          "federated base loss": 0.051,
-          "federated 10% poisoned accuracy": 97.76,
-          "federated 10% poisoned loss": 0.178,
-          "federated 25% poisoned accuracy": 97.52,
-          "federated 25% poisoned loss": 0.422
-        },
-        {
-          "epoch": 8,
-          "centralized base accuracy": 95.04,
-          "centralized 10% poisoned accuracy": 90.54,
-          "centralized 25% poisoned accuracy": 89.92,
-          "centralized base loss": 0.1712,
-          "centralized 10% poisoned loss": 0.2081,
-          "centralized 25% poisoned loss": 0.4325,
-          "federated base accuracy": 98.41,
-          "federated base loss": 0.052,
-          "federated 10% poisoned accuracy": 97.77,
-          "federated 10% poisoned loss": 0.192,
-          "federated 25% poisoned accuracy": 97.31,
-          "federated 25% poisoned loss": 0.479
-        },
-        {
-          "epoch": 9,
-          "centralized base accuracy": 95.27,
-          "centralized 10% poisoned accuracy": 90.66,
-          "centralized 25% poisoned accuracy": 89.97,
-          "centralized base loss": 0.161,
-          "centralized 10% poisoned loss": 0.2766,
-          "centralized 25% poisoned loss": 0.4296,
-          "federated base accuracy": 98.38,
-          "federated base loss": 0.052,
-          "federated 10% poisoned accuracy": 97.74,
-          "federated 10% poisoned loss": 0.211,
-          "federated 25% poisoned accuracy": 97.35,
-          "federated 25% poisoned loss": 0.393
-        },
-        {
-          "epoch": 10,
-          "centralized base accuracy": 95.51,
-          "centralized 10% poisoned accuracy": 90.72,
-          "centralized 25% poisoned accuracy": 90.01,
-          "centralized base loss": 0.1498,
-          "centralized 10% poisoned loss": 0.2459,
-          "centralized 25% poisoned loss": 0.4193,
-          "federated base accuracy": 98.36,
-          "federated base loss": 0.053,
-          "federated 10% poisoned accuracy": 97.65,
-          "federated 10% poisoned loss": 0.179,
-          "federated 25% poisoned accuracy": 97.33,
-          "federated 25% poisoned loss": 0.476
-        },
-        {
-          "epoch": 11,
-          "centralized base accuracy": 95.99,
-          "centralized 10% poisoned accuracy": 90.78,
-          "centralized 25% poisoned accuracy": 90.21,
-          "centralized base loss": 0.1458,
-          "centralized 10% poisoned loss": 0.2241,
-          "centralized 25% poisoned loss": 0.4081,
-          "federated base accuracy": 98.29,
-          "federated base loss": 0.054,
-          "federated 10% poisoned accuracy": 97.67,
-          "federated 10% poisoned loss": 0.208,
-          "federated 25% poisoned accuracy": 97.2,
-          "federated 25% poisoned loss": 0.459
-        },
-        {
-          "epoch": 12,
-          "centralized base accuracy": 96.19,
-          "centralized 10% poisoned accuracy": 90.8,
-          "centralized 25% poisoned accuracy": 90.02,
-          "centralized base loss": 0.1292,
-          "centralized 10% poisoned loss": 0.2054,
-          "centralized 25% poisoned loss": 0.402,
-          "federated base accuracy": 98.48,
-          "federated base loss": 0.055,
-          "federated 10% poisoned accuracy": 97.65,
-          "federated 10% poisoned loss": 0.206,
-          "federated 25% poisoned accuracy": 97.09,
-          "federated 25% poisoned loss": 0.494
-        },
-        {
-          "epoch": 13,
-          "centralized base accuracy": 96.42,
-          "centralized 10% poisoned accuracy": 90.84,
-          "centralized 25% poisoned accuracy": 90.15,
-          "centralized base loss": 0.1207,
-          "centralized 10% poisoned loss": 0.1961,
-          "centralized 25% poisoned loss": 0.3968,
-          "federated base accuracy": 98.43,
-          "federated base loss": 0.056,
-          "federated 10% poisoned accuracy": 97.65,
-          "federated 10% poisoned loss": 0.244,
-          "federated 25% poisoned accuracy": 96.93,
-          "federated 25% poisoned loss": 0.477
-        },
-        {
-          "epoch": 14,
-          "centralized base accuracy": 96.61,
-          "centralized 10% poisoned accuracy": 90.95,
-          "centralized 25% poisoned accuracy": 90.25,
-          "centralized base loss": 0.1085,
-          "centralized 10% poisoned loss": 0.1843,
-          "centralized 25% poisoned loss": 0.3892,
-          "federated base accuracy": 98.48,
-          "federated base loss": 0.058,
-          "federated 10% poisoned accuracy": 97.58,
-          "federated 10% poisoned loss": 0.213,
-          "federated 25% poisoned accuracy": 97.22,
-          "federated 25% poisoned loss": 0.356
-        },
-        {
-          "epoch": 15,
-          "centralized base accuracy": 96.65,
-          "centralized 10% poisoned accuracy": 91.02,
-          "centralized 25% poisoned accuracy": 90.13,
-          "centralized base loss": 0.1014,
-          "centralized 10% poisoned loss": 0.1739,
-          "centralized 25% poisoned loss": 0.3803,
-          "federated base accuracy": 98.48,
-          "federated base loss": 0.057,
-          "federated 10% poisoned accuracy": 97.5,
-          "federated 10% poisoned loss": 0.218,
-          "federated 25% poisoned accuracy": 96.97,
-          "federated 25% poisoned loss": 0.469
-        },
-        {
-          "epoch": 16,
-          "centralized base accuracy": 97.05,
-          "centralized 10% poisoned accuracy": 91.05,
-          "centralized 25% poisoned accuracy": 90.28,
-          "centralized base loss": 0.0897,
-          "centralized 10% poisoned loss": 0.1536,
-          "centralized 25% poisoned loss": 0.3722,
-          "federated base accuracy": 98.44,
-          "federated base loss": 0.057,
-          "federated 10% poisoned accuracy": 97.26,
-          "federated 10% poisoned loss": 0.256,
-          "federated 25% poisoned accuracy": 97.09,
-          "federated 25% poisoned loss": 0.416
-        },
-        {
-          "epoch": 17,
-          "centralized base accuracy": 97.09,
-          "centralized 10% poisoned accuracy": 91.17,
-          "centralized 25% poisoned accuracy": 90.08,
-          "centralized base loss": 0.0837,
-          "centralized 10% poisoned loss": 0.1439,
-          "centralized 25% poisoned loss": 0.3623,
-          "federated base accuracy": 98.31,
-          "federated base loss": 0.06,
-          "federated 10% poisoned accuracy": 97.57,
-          "federated 10% poisoned loss": 0.193,
-          "federated 25% poisoned accuracy": 96.93,
-          "federated 25% poisoned loss": 0.412
-        },
-        {
-          "epoch": 18,
-          "centralized base accuracy": 97.09,
-          "centralized 10% poisoned accuracy": 91.15,
-          "centralized 25% poisoned accuracy": 90.31,
-          "centralized base loss": 0.0771,
-          "centralized 10% poisoned loss": 0.1261,
-          "centralized 25% poisoned loss": 0.355,
-          "federated base accuracy": 98.38,
-          "federated base loss": 0.06,
-          "federated 10% poisoned accuracy": 97.28,
-          "federated 10% poisoned loss": 0.233,
-          "federated 25% poisoned accuracy": 96.93,
-          "federated 25% poisoned loss": 0.44
-        },
-        {
-          "epoch": 19,
-          "centralized base accuracy": 97.34,
-          "centralized 10% poisoned accuracy": 91.08,
-          "centralized 25% poisoned accuracy": 90.2,
-          "centralized base loss": 0.0721,
-          "centralized 10% poisoned loss": 0.1194,
-          "centralized 25% poisoned loss": 0.3498,
-          "federated base accuracy": 98.43,
-          "federated base loss": 0.062,
-          "federated 10% poisoned accuracy": 97.28,
-          "federated 10% poisoned loss": 0.24,
-          "federated 25% poisoned accuracy": 96.81,
-          "federated 25% poisoned loss": 0.408
-        },
-        {
-          "epoch": 20,
-          "centralized base accuracy": 97.4,
-          "centralized 10% poisoned accuracy": 91.15,
-          "centralized 25% poisoned accuracy": 90.23,
-          "centralized base loss": 0.0653,
-          "centralized 10% poisoned loss": 0.1067,
-          "centralized 25% poisoned loss": 0.3444,
-          "federated base accuracy": 98.44,
-          "federated base loss": 0.061,
-          "federated 10% poisoned accuracy": 97.39,
-          "federated 10% poisoned loss": 0.209,
-          "federated 25% poisoned accuracy": 96.77,
-          "federated 25% poisoned loss": 0.453
-        }
+        { "epoch": 1,
+        "centralized 0% loss": 0.265, "centralized 0% accuracy": 92.37,
+          "centralized 0% precision": 0.925, "centralized 0% recall": 0.923, "centralized 0% f1": 0.923,
+
+          "centralized 10% loss": 0.394, "centralized 10% accuracy": 92.24,
+          "centralized 10% precision": 0.925, "centralized 10% recall": 0.921, "centralized 10% f1": 0.921,
+
+          "centralized 25% loss": 0.597, "centralized 25% accuracy": 90.40,
+          "centralized 25% precision": 0.916, "centralized 25% recall": 0.901, "centralized 25% f1": 0.904,
+
+          "federated 0% loss": 0.4727566, "federated 0% accuracy": 89.36,
+          "federated 0% precision": 0.8933152, "federated 0% recall": 0.8923852, "federated 0% f1": 0.8921994,
+      
+          "federated 10% loss": 0.3688399, "federated 10% accuracy": 89.73,
+          "federated 10% precision": 0.8985897, "federated 10% recall": 0.8957655, "federated 10% f1": 0.8957379,
+      
+          "federated 25% loss": 0.6823039, "federated 25% accuracy": 88.94,
+          "federated 25% precision": 0.8900088, "federated 25% recall": 0.8881288, "federated 25% f1": 0.8878384 },
+      
+        { "epoch": 2,
+          "centralized 0% loss": 0.212, "centralized 0% accuracy": 93.68,
+          "centralized 0% precision": 0.938, "centralized 0% recall": 0.937, "centralized 0% f1": 0.936,
+
+          "centralized 10% loss": 0.300, "centralized 10% accuracy": 95.55,
+          "centralized 10% precision": 0.955, "centralized 10% recall": 0.955, "centralized 10% f1": 0.955,
+
+          "centralized 25% loss": 0.512, "centralized 25% accuracy": 94.01,
+          "centralized 25% precision": 0.942, "centralized 25% recall": 0.940, "centralized 25% f1": 0.940,
+          
+          "federated 0% loss": 0.4367149, "federated 0% accuracy": 90.89,
+          "federated 0% precision": 0.9089606, "federated 0% recall": 0.9077815, "federated 0% f1": 0.9079684,
+      
+          "federated 10% loss": 0.3006583, "federated 10% accuracy": 91.40,
+          "federated 10% precision": 0.9132309, "federated 10% recall": 0.9127568, "federated 10% f1": 0.9125903,
+
+          "federated 25% loss": 0.6170594, "federated 25% accuracy": 90.34,
+          "federated 25% precision": 0.9046972, "federated 25% recall": 0.9019329, "federated 25% f1": 0.9017929 },
+      
+        { "epoch": 3,
+
+          "centralized 0% loss": 0.165, "centralized 0% accuracy": 95.09,
+          "centralized 0% precision": 0.952, "centralized 0% recall": 0.951, "centralized 0% f1": 0.951,
+
+          "centralized 10% loss": 0.253, "centralized 10% accuracy": 96.49,
+          "centralized 10% precision": 0.965, "centralized 10% recall": 0.965, "centralized 10% f1": 0.965,
+
+          "centralized 25% loss": 0.477, "centralized 25% accuracy": 95.88,
+          "centralized 25% precision": 0.959, "centralized 25% recall": 0.959, "centralized 25% f1": 0.959,
+
+          "federated 0% loss": 0.4099275, "federated 0% accuracy": 91.33,
+          "federated 0% precision": 0.9142521, "federated 0% recall": 0.9121296, "federated 0% f1": 0.9120190,
+      
+          "federated 10% loss": 0.2797683, "federated 10% accuracy": 91.97,
+          "federated 10% precision": 0.9188977, "federated 10% recall": 0.9188598, "federated 10% f1": 0.9185227, 
+      
+          "federated 25% loss": 0.5899108, "federated 25% accuracy": 91.79,
+          "federated 25% precision": 0.9180254, "federated 25% recall": 0.9167962, "federated 25% f1": 0.9168192 },
+      
+        { "epoch": 4,
+
+          "centralized 0% loss": 0.133, "centralized 0% accuracy": 96.12,
+          "centralized 0% precision": 0.962, "centralized 0% recall": 0.961, "centralized 0% f1": 0.961,
+
+          "centralized 10% loss": 0.232, "centralized 10% accuracy": 96.88,
+          "centralized 10% precision": 0.969, "centralized 10% recall": 0.969, "centralized 10% f1": 0.969,
+
+          "centralized 25% loss": 0.460, "centralized 25% accuracy": 96.23,
+          "centralized 25% precision": 0.963, "centralized 25% recall": 0.962, "centralized 25% f1": 0.962,
+
+          "federated 0% loss": 0.3874049, "federated 0% accuracy": 92.06,
+          "federated 0% precision": 0.9217189, "federated 0% recall": 0.9195944, "federated 0% f1": 0.9198923,
+      
+          "federated 10% loss": 0.2621190, "federated 10% accuracy": 92.51,
+          "federated 10% precision": 0.9245430, "federated 10% recall": 0.9241598, "federated 10% f1": 0.9240900,
+      
+          "federated 25% loss": 0.5801950, "federated 25% accuracy": 92.41,
+          "federated 25% precision": 0.9242336, "federated 25% recall": 0.9233232, "federated 25% f1": 0.9232074 },
+      
+        { "epoch": 5,
+
+          "centralized 0% loss": 0.110, "centralized 0% accuracy": 96.98,
+          "centralized 0% precision": 0.970, "centralized 0% recall": 0.970, "centralized 0% f1": 0.970,
+      
+          "centralized 10% loss": 0.219, "centralized 10% accuracy": 97.21,
+          "centralized 10% precision": 0.972, "centralized 10% recall": 0.972, "centralized 10% f1": 0.972,
+      
+          "centralized 25% loss": 0.440, "centralized 25% accuracy": 96.55,
+          "centralized 25% precision": 0.966, "centralized 25% recall": 0.965, "centralized 25% f1": 0.965,
+
+          "federated 0% loss": 0.3782562, "federated 0% accuracy": 92.71,
+          "federated 0% precision": 0.9264524, "federated 0% recall": 0.9266999, "federated 0% f1": 0.9262588,
+      
+          "federated 10% loss": 0.2531090, "federated 10% accuracy": 92.79,
+          "federated 10% precision": 0.9285338, "federated 10% recall": 0.9267670, "federated 10% f1": 0.9269536,
+      
+          "federated 25% loss": 0.5647144, "federated 25% accuracy": 92.95,
+          "federated 25% precision": 0.9295493, "federated 25% recall": 0.9288028, "federated 25% f1": 0.9286899 },
+      
+        { "epoch": 6,
+
+          "centralized 0% loss": 0.095, "centralized 0% accuracy": 97.22,
+          "centralized 0% precision": 0.972, "centralized 0% recall": 0.972, "centralized 0% f1": 0.972,
+
+          "centralized 10% loss": 0.208, "centralized 10% accuracy": 97.43,
+          "centralized 10% precision": 0.975, "centralized 10% recall": 0.974, "centralized 10% f1": 0.974,
+
+          "centralized 25% loss": 0.403, "centralized 25% accuracy": 97.08,
+          "centralized 25% precision": 0.971, "centralized 25% recall": 0.971, "centralized 25% f1": 0.971,
+
+          "federated 0% loss": 0.3572145, "federated 0% accuracy": 93.21,
+          "federated 0% precision": 0.9322443, "federated 0% recall": 0.9312701, "federated 0% f1": 0.9313421,
+      
+          "federated 10% loss": 0.2386813, "federated 10% accuracy": 93.21,
+          "federated 10% precision": 0.9320651, "federated 10% recall": 0.9309418, "federated 10% f1": 0.9310345,
+      
+          "federated 25% loss": 0.5426648, "federated 25% accuracy": 93.63,
+          "federated 25% precision": 0.9368830, "federated 25% recall": 0.9354969, "federated 25% f1": 0.9357158 },
+      
+        { "epoch": 7,
+
+          "centralized 0% loss": 0.088, "centralized 0% accuracy": 97.51,
+          "centralized 0% precision": 0.975, "centralized 0% recall": 0.975, "centralized 0% f1": 0.975,
+
+          "centralized 10% loss": 0.224, "centralized 10% accuracy": 97.45,
+          "centralized 10% precision": 0.975, "centralized 10% recall": 0.974, "centralized 10% f1": 0.974,
+
+          "centralized 25% loss": 0.414, "centralized 25% accuracy": 97.25,
+          "centralized 25% precision": 0.972, "centralized 25% recall": 0.972, "centralized 25% f1": 0.972,
+
+          "federated 0% loss": 0.3473789, "federated 0% accuracy": 93.71,
+          "federated 0% precision": 0.9369053, "federated 0% recall": 0.9368042, "federated 0% f1": 0.9365441,
+      
+          "federated 10% loss": 0.2258474, "federated 10% accuracy": 93.46,
+          "federated 10% precision": 0.9342655, "federated 10% recall": 0.9337513, "federated 10% f1": 0.9337281,
+      
+          "federated 25% loss": 0.5314126, "federated 25% accuracy": 93.74,
+          "federated 25% precision": 0.9382613, "federated 25% recall": 0.9366063, "federated 25% f1": 0.9369386 },
+      
+        { "epoch": 8,
+
+          "centralized 0% loss": 0.079, "centralized 0% accuracy": 97.75,
+          "centralized 0% precision": 0.978, "centralized 0% recall": 0.977, "centralized 0% f1": 0.977,
+
+          "centralized 10% loss": 0.230, "centralized 10% accuracy": 97.41,
+          "centralized 10% precision": 0.974, "centralized 10% recall": 0.974, "centralized 10% f1": 0.974,
+
+          "centralized 25% loss": 0.380, "centralized 25% accuracy": 96.83,
+          "centralized 25% precision": 0.969, "centralized 25% recall": 0.968, "centralized 25% f1": 0.968,
+
+          "federated 0% loss": 0.3271600, "federated 0% accuracy": 94.27,
+          "federated 0% precision": 0.9425250, "federated 0% recall": 0.9421025, "federated 0% f1": 0.9421469,
+      
+          "federated 10% loss": 0.2170621, "federated 10% accuracy": 93.86,
+          "federated 10% precision": 0.9389851, "federated 10% recall": 0.9377324, "federated 10% f1": 0.9378077,
+      
+          "federated 25% loss": 0.5080227, "federated 25% accuracy": 94.63,
+          "federated 25% precision": 0.9464248, "federated 25% recall": 0.9457221, "federated 25% f1": 0.9459251 },
+      
+        { "epoch": 9,
+
+          "centralized 0% loss": 0.073, "centralized 0% accuracy": 97.90,
+          "centralized 0% precision": 0.979, "centralized 0% recall": 0.979, "centralized 0% f1": 0.979,
+
+          "centralized 10% loss": 0.206, "centralized 10% accuracy": 97.57,
+          "centralized 10% precision": 0.976, "centralized 10% recall": 0.975, "centralized 10% f1": 0.975,
+
+          "centralized 25% loss": 0.389, "centralized 25% accuracy": 96.88,
+          "centralized 25% precision": 0.970, "centralized 25% recall": 0.969, "centralized 25% f1": 0.969,
+
+          "federated 0% loss": 0.3182953, "federated 0% accuracy": 94.52,
+          "federated 0% precision": 0.9452065, "federated 0% recall": 0.9445941, "federated 0% f1": 0.9446940,
+      
+          "federated 10% loss": 0.2008206, "federated 10% accuracy": 94.47,
+          "federated 10% precision": 0.9442088, "federated 10% recall": 0.9440616, "federated 10% f1": 0.9440280,
+      
+          "federated 25% loss": 0.4988371, "federated 25% accuracy": 95.16,
+          "federated 25% precision": 0.9514140, "federated 25% recall": 0.9511961, "federated 25% f1": 0.9512507 },
+      
+        { "epoch": 10,
+
+          "centralized 0% loss": 0.070, "centralized 0% accuracy": 97.87,
+          "centralized 0% precision": 0.979, "centralized 0% recall": 0.979, "centralized 0% f1": 0.979,
+
+          "centralized 10% loss": 0.207, "centralized 10% accuracy": 97.58,
+          "centralized 10% precision": 0.976, "centralized 10% recall": 0.976, "centralized 10% f1": 0.976,
+
+          "centralized 25% loss": 0.410, "centralized 25% accuracy": 97.01,
+          "centralized 25% precision": 0.971, "centralized 25% recall": 0.970, "centralized 25% f1": 0.970,
+
+          "federated 0% loss": 0.3081292, "federated 0% accuracy": 95.04,
+          "federated 0% precision": 0.9504609, "federated 0% recall": 0.9500271, "federated 0% f1": 0.9500382,
+      
+          "federated 10% loss": 0.1915762, "federated 10% accuracy": 94.54,
+          "federated 10% precision": 0.9452635, "federated 10% recall": 0.9445469, "federated 10% f1": 0.9446639,
+      
+          "federated 25% loss": 0.4858638, "federated 25% accuracy": 95.38,
+          "federated 25% precision": 0.9535395, "federated 25% recall": 0.9536274, "federated 25% f1": 0.9534727 },
+      
+        { "epoch": 11,
+
+          "centralized 0% loss": 0.066, "centralized 0% accuracy": 98.03,
+          "centralized 0% precision": 0.980, "centralized 0% recall": 0.980, "centralized 0% f1": 0.980,
+
+          "centralized 10% loss": 0.192, "centralized 10% accuracy": 97.79,
+          "centralized 10% precision": 0.978, "centralized 10% recall": 0.978, "centralized 10% f1": 0.978,
+
+          "centralized 25% loss": 0.410, "centralized 25% accuracy": 97.22,
+          "centralized 25% precision": 0.973, "centralized 25% recall": 0.972, "centralized 25% f1": 0.972,
+
+          "federated 0% loss": 0.2990781, "federated 0% accuracy": 95.23,
+          "federated 0% precision": 0.9524075, "federated 0% recall": 0.9519077, "federated 0% f1": 0.9519787,
+      
+          "federated 10% loss": 0.1812556, "federated 10% accuracy": 94.81,
+          "federated 10% precision": 0.9478135, "federated 10% recall": 0.9474168, "federated 10% f1": 0.9474920,   
+      
+          "federated 25% loss": 0.4837010, "federated 25% accuracy": 95.69,
+          "federated 25% precision": 0.9566418, "federated 25% recall": 0.9567674, "federated 25% f1": 0.9566071 },
+      
+        { "epoch": 12,
+
+          "centralized 0% loss": 0.065, "centralized 0% accuracy": 98.10,
+          "centralized 0% precision": 0.981, "centralized 0% recall": 0.981, "centralized 0% f1": 0.981,
+
+          "centralized 10% loss": 0.193, "centralized 10% accuracy": 97.93,
+          "centralized 10% precision": 0.979, "centralized 10% recall": 0.979, "centralized 10% f1": 0.979,
+
+          "centralized 25% loss": 0.393, "centralized 25% accuracy": 97.22,
+          "centralized 25% precision": 0.972, "centralized 25% recall": 0.972, "centralized 25% f1": 0.972,
+
+          "federated 0% loss": 0.2908688, "federated 0% accuracy": 95.53,
+          "federated 0% precision": 0.9552896, "federated 0% recall": 0.9550267, "federated 0% f1": 0.9549695,
+      
+          "federated 10% loss": 0.1737884, "federated 10% accuracy": 95.03,
+          "federated 10% precision": 0.9503440, "federated 10% recall": 0.9496353, "federated 10% f1": 0.9498114,
+      
+          "federated 25% loss": 0.4662387, "federated 25% accuracy": 95.72,
+          "federated 25% precision": 0.9572122, "federated 25% recall": 0.9569138, "federated 25% f1": 0.9569483 },
+      
+        { "epoch": 13,
+
+          "centralized 0% loss": 0.064, "centralized 0% accuracy": 98.08,
+          "centralized 0% precision": 0.981, "centralized 0% recall": 0.981, "centralized 0% f1": 0.981,
+
+          "centralized 10% loss": 0.200, "centralized 10% accuracy": 97.84,
+          "centralized 10% precision": 0.979, "centralized 10% recall": 0.978, "centralized 10% f1": 0.978,
+
+          "centralized 25% loss": 0.375, "centralized 25% accuracy": 97.36,
+          "centralized 25% precision": 0.974, "centralized 25% recall": 0.973, "centralized 25% f1": 0.973,
+
+          "federated 0% loss": 0.2760651, "federated 0% accuracy": 95.82,
+          "federated 0% precision": 0.9583357, "federated 0% recall": 0.9578749, "federated 0% f1": 0.9579746,
+      
+          "federated 10% loss": 0.1681443, "federated 10% accuracy": 95.31,
+          "federated 10% precision": 0.9530077, "federated 10% recall": 0.9526333, "federated 10% f1": 0.9526272,
+      
+          "federated 25% loss": 0.4587010, "federated 25% accuracy": 95.92,
+          "federated 25% precision": 0.9593353, "federated 25% recall": 0.9590068, "federated 25% f1": 0.9590068 },
+      
+        { "epoch": 14,
+
+          "centralized 0% loss": 0.061, "centralized 0% accuracy": 98.10,
+          "centralized 0% precision": 0.981, "centralized 0% recall": 0.981, "centralized 0% f1": 0.981,
+
+          "centralized 10% loss": 0.193, "centralized 10% accuracy": 97.68,
+          "centralized 10% precision": 0.977, "centralized 10% recall": 0.976, "centralized 10% f1": 0.977,
+
+          "centralized 25% loss": 0.385, "centralized 25% accuracy": 97.27,
+          "centralized 25% precision": 0.973, "centralized 25% recall": 0.973, "centralized 25% f1": 0.973,
+
+          "federated 0% loss": 0.2751009, "federated 0% accuracy": 95.90,
+          "federated 0% precision": 0.9593241, "federated 0% recall": 0.9586657, "federated 0% f1": 0.9588398,
+      
+          "federated 10% loss": 0.1568121, "federated 10% accuracy": 95.74,
+          "federated 10% precision": 0.9574001, "federated 10% recall": 0.9568134, "federated 10% f1": 0.9570067, 
+      
+          "federated 25% loss": 0.4498287, "federated 25% accuracy": 96.09,
+          "federated 25% precision": 0.9608272, "federated 25% recall": 0.9607814, "federated 25% f1": 0.9606771 },
+      
+        { "epoch": 15,
+
+          "centralized 0% loss": 0.063, "centralized 0% accuracy": 98.03,
+          "centralized 0% precision": 0.981, "centralized 0% recall": 0.980, "centralized 0% f1": 0.980,
+
+          "centralized 10% loss": 0.193, "centralized 10% accuracy": 97.82,
+          "centralized 10% precision": 0.978, "centralized 10% recall": 0.978, "centralized 10% f1": 0.978,
+
+          "centralized 25% loss": 0.370, "centralized 25% accuracy": 97.50,
+          "centralized 25% precision": 0.975, "centralized 25% recall": 0.975, "centralized 25% f1": 0.975,
+
+          "federated 0% loss": 0.2643478, "federated 0% accuracy": 96.10,
+          "federated 0% precision": 0.9610144, "federated 0% recall": 0.9607966, "federated 0% f1": 0.9608465,
+      
+          "federated 10% loss": 0.1500782, "federated 10% accuracy": 95.77,
+          "federated 10% precision": 0.9575384, "federated 10% recall": 0.9572110, "federated 10% f1": 0.9572611, 
+      
+          "federated 25% loss": 0.4455103, "federated 25% accuracy": 96.10,
+          "federated 25% precision": 0.9613378, "federated 25% recall": 0.9607269, "federated 25% f1": 0.9608697 }
       ],
       "images": [
-        { "title": "Base Centralized Results", "imagePath": "/images/MNIST-centralized/NewBaseGraph.png" },
-        { "title": "10% Centralized Poisoned Results", "imagePath": "/images/MNIST-centralized/New10pGraph.png" },
-        { "title": "25% Centralized Poisoned Results", "imagePath": "/images/MNIST-centralized/New25pGraph.png" },
-        { "title": "Base Federated Results", "imagePath": "/images/MNIST-federated/BaseFederated.png" },
-        { "title": "10% Federated Poisoned Results", "imagePath": "/images/MNIST-federated/10pFederated.png" },
-        { "title": "25% Federated Poisoned Results", "imagePath": "/images/MNIST-federated/25pFederated.png" }
+        { "title": "0% Poisoned Centralized Model",  "imagePath": "/images/MNIST-centralized/0%252.png"  },
+        { "title": "10% Poisoned Centralized Model",  "imagePath": "/images/MNIST-centralized/10%252.png" },
+        { "title": "25% Poisoned Centralized Model",  "imagePath": "/images/MNIST-centralized/25%252.png" },
+        { "title": "0% Poisoned Federated Model",    "imagePath": "/images/MNIST-federated/0%25server1.png"    },
+        { "title": "10% Poisoned Federated Model",    "imagePath": "/images/MNIST-federated/10%25server1.png"   },
+        { "title": "25% Poisoned Federated Model",    "imagePath": "/images/MNIST-federated/25%25server1.png"   }
       ]
     },
     {
-      "id": "model3",
-      "name": "Model 3",
+      "id": "ImageWoof",
+      "name": "ImageWoof",
       "info": [
-        { "label": "Name", "value": "Model 3" },
-        { "label": "% Data Poisoned", "value": "15%" },
-        { "label": "Delta Accuracy", "value": "0.07" }
+        { "label": "Dataset",         "value": "ImageWoof" },
+        { "label": "% Data Poisoned", "value": "0%, 10%, 25%" },
+        { "label": "Metrics",         "value": "Accuracy, Cross Entropy Loss, Precision, Recall, Micro-Averaged F1" },
+        { "label": "Task",      "value": "Fine Tuning a ResNet 18 Model with a single layer on the ImageWoof dataset with 0%, 10%, and 25% poisoned data, and in both a centralized and federated setting."}
       ],
-      "summary": "This model focuses on robustness against high data poisoning.",
+      "images": [
+        { "title": "0% Poisoned Centralized Model",  "imagePath": "/images/ImageWoof-centralized/0%25.png"  },
+        { "title": "10% Poisoned Centralized Model",  "imagePath": "/images/ImageWoof-centralized/10%25.png" },
+        { "title": "25% Poisoned Centralized Model",  "imagePath": "/images/ImageWoof-centralized/25%25.png" },
+        { "title": "0% Poisoned Federated Model",    "imagePath": "/images/ImageWoof-federated/0%25.png"    },
+        { "title": "10% Poisoned Federated Model",    "imagePath": "/images/ImageWoof-federated/10%25.png"   },
+        { "title": "25% Poisoned Federated Model",    "imagePath": "/images/ImageWoof-federated/25%25.png"   }
+      ],
       "data": [
         {
           "epoch": 1,
-          "standard": 1.0462,
-          "poisoned.2": 1.1343,
-          "poisoned.5": 1.5436
+      
+          "centralized 0% accuracy": 86.33,
+          "centralized 0% loss": 0.5227,
+          "centralized 0% recall": 0.8460,
+          "centralized 0% f1": 0.8505,
+          "centralized 10% accuracy": 85.49,
+          "centralized 10% loss": 0.5989,
+          "centralized 10% recall": 0.8410,
+          "centralized 10% f1": 0.8453,
+          "centralized 25% accuracy": 80.63,
+          "centralized 25% loss": 0.8177,
+          "centralized 25% recall": 0.7944,
+          "centralized 25% f1": 0.8036,
+            
+          "federated 0% loss":        0.8371,
+          "federated 0% accuracy":   77.65,
+          "federated 0% precision":   0.7646,
+          "federated 0% recall":      0.7626,
+          "federated 0% f1":          0.7636,
+
+          "federated 10% loss":       1.1915,
+          "federated 10% accuracy":  68.06,
+          "federated 10% precision":  0.6592,
+          "federated 10% recall":     0.6582,
+          "federated 10% f1":         0.6587,
+
+          "federated 25% loss":       1.6152,
+          "federated 25% accuracy":  58.39,
+          "federated 25% precision":  0.5424,
+          "federated 25% recall":     0.5558,
+          "federated 25% f1":         0.5490
         },
         {
           "epoch": 2,
-          "standard": 1.0148,
-          "poisoned.2": 1.1225,
-          "poisoned.5": 1.541
+      
+          "centralized 0% accuracy": 88.80,
+          "centralized 0% loss": 0.3856,
+          "centralized 0% recall": 0.8742,
+          "centralized 0% f1": 0.8776,
+          "centralized 10% accuracy": 88.67,
+          "centralized 10% loss": 0.4673,
+          "centralized 10% recall": 0.8743,
+          "centralized 10% f1": 0.8783,
+          "centralized 25% accuracy": 86.99,
+          "centralized 25% loss": 0.6180,
+          "centralized 25% recall": 0.8446,
+          "centralized 25% f1": 0.8489,
+
+          "federated 0% loss":        0.5119,
+          "federated 0% accuracy":    82.67,
+          "federated 0% precision":   0.8168,
+          "federated 0% recall":      0.8202,
+          "federated 0% f1":          0.8185,
+
+          "federated 10% loss":       0.6275,
+          "federated 10% accuracy":  81.14,
+          "federated 10% precision":  0.8039,
+          "federated 10% recall":     0.7987,
+          "federated 10% f1":         0.8013,
+
+          "federated 25% loss":       0.8553,
+          "federated 25% accuracy":  80.89,
+          "federated 25% precision":  0.7976,
+          "federated 25% recall":     0.7885,
+          "federated 25% f1":         0.7930
         },
         {
           "epoch": 3,
-          "standard": 0.9968,
-          "poisoned.2": 1.1076,
-          "poisoned.5": 1.5381
-        }
-      ],
-      "images": [
-        { "title": "Model 3 Diagram", "imagePath": "/images/netflix/model3-diagram.png" },
-        { "title": "Model 3 Results", "imagePath": "/images/netflix/model3-results.png" },
-        { "title": "Additional Visualization", "imagePath": "/images/netflix/model3-additional.png" }
-      ]
-    }
+      
+          "centralized 0% accuracy": 90.56,
+          "centralized 0% loss": 0.3227,
+          "centralized 0% recall": 0.8995,
+          "centralized 0% f1": 0.8987,
+          "centralized 10% accuracy": 89.69,
+          "centralized 10% loss": 0.4297,
+          "centralized 10% recall": 0.8854,
+          "centralized 10% f1": 0.8888,
+          "centralized 25% accuracy": 86.79,
+          "centralized 25% loss": 0.6014,
+          "centralized 25% recall": 0.8537,
+          "centralized 25% f1": 0.8603,
+
+          "federated 0% loss":        0.4960,
+          "federated 0% accuracy":   83.89,
+          "federated 0% precision":   0.8311,
+          "federated 0% recall":      0.8225,
+          "federated 0% f1":          0.8268,
+
+          "federated 10% loss":       0.5365,
+          "federated 10% accuracy":  82.54,
+          "federated 10% precision":  0.8197,
+          "federated 10% recall":     0.8159,
+          "federated 10% f1":         0.8178,
+
+          "federated 25% loss":       0.7511,
+          "federated 25% accuracy":  79.46,
+          "federated 25% precision":  0.7873,
+          "federated 25% recall":     0.7809,
+          "federated 25% f1":         0.7841
+        },
+        {
+          "epoch": 4,
+      
+          "centralized 0% accuracy": 91.47,
+          "centralized 0% loss": 0.2855,
+          "centralized 0% recall": 0.9042,
+          "centralized 0% f1": 0.9069,
+          "centralized 10% accuracy": 90.46,
+          "centralized 10% loss": 0.3858,
+          "centralized 10% recall": 0.8929,
+          "centralized 10% f1": 0.8966,
+          "centralized 25% accuracy": 88.67,
+          "centralized 25% loss": 0.5841,
+          "centralized 25% recall": 0.8750,
+          "centralized 25% f1": 0.8788,
+
+          "federated 0% loss":        0.4858,
+          "federated 0% accuracy":   84.04,
+          "federated 0% precision":   0.8311,
+          "federated 0% recall":      0.8331,
+          "federated 0% f1":          0.8321,
+
+          "federated 10% loss":       0.5139,
+          "federated 10% accuracy":  83.91,
+          "federated 10% precision":  0.8306,
+          "federated 10% recall":     0.8312,
+          "federated 10% f1":         0.8309,
+
+          "federated 25% loss":       0.6721,
+          "federated 25% accuracy":  82.90,
+          "federated 25% precision":  0.8219,
+          "federated 25% recall":     0.8201,
+          "federated 25% f1":         0.8210
+        },
+        {
+          "epoch": 5,
+      
+          "centralized 0% accuracy": 91.40,
+          "centralized 0% loss": 0.2757,
+          "centralized 0% recall": 0.9033,
+          "centralized 0% f1": 0.9066,
+          "centralized 10% accuracy": 90.51,
+          "centralized 10% loss": 0.3803,
+          "centralized 10% recall": 0.8949,
+          "centralized 10% f1": 0.8975,
+          "centralized 25% accuracy": 88.75,
+          "centralized 25% loss": 0.5962,
+          "centralized 25% recall": 0.8772,
+          "centralized 25% f1": 0.8819,
+
+          "federated 0% loss":        0.5335,
+          "federated 0% accuracy":   83.56,
+          "federated 0% precision":   0.8294,
+          "federated 0% recall":      0.8296,
+          "federated 0% f1":          0.8295,
+      
+          "federated 10% loss":       0.4678,
+          "federated 10% accuracy":  85.11,
+          "federated 10% precision":  0.8451,
+          "federated 10% recall":     0.8369,
+          "federated 10% f1":         0.8410,
+      
+          "federated 25% loss":       0.7139,
+          "federated 25% accuracy":  81.52,
+          "federated 25% precision":  0.8103,
+          "federated 25% recall":     0.8051,
+          "federated 25% f1":         0.8077
+        },
+        {"epoch": 6,
+
+        "centralized 0% accuracy": 91.17,
+        "centralized 0% loss": 0.2702,
+        "centralized 0% recall": 0.9047,
+        "centralized 0% f1": 0.9048,
+        "centralized 10% accuracy": 89.92,
+        "centralized 10% loss": 0.3781,
+        "centralized 10% recall": 0.8870,
+        "centralized 10% f1": 0.8910,
+        "centralized 25% accuracy": 88.42,
+        "centralized 25% loss": 0.6094,
+        "centralized 25% recall": 0.8751,
+        "centralized 25% f1": 0.8794,
+
+        "federated 0% loss":        0.5199,
+        "federated 0% accuracy":   84.35,
+        "federated 0% precision":   0.8292,
+        "federated 0% recall":      0.8389,
+        "federated 0% f1":          0.8340,
+
+        "federated 10% loss":       0.5463,
+        "federated 10% accuracy":  81.80,
+        "federated 10% precision":  0.7941,
+        "federated 10% recall":     0.8214,
+        "federated 10% f1":         0.8075,
+
+        "federated 25% loss":       0.7489,
+        "federated 25% accuracy":  76.61,
+        "federated 25% precision":  0.7745,
+        "federated 25% recall":     0.7555,
+        "federated 25% f1":         0.7649
+      },
+      {
+        "epoch": 7,
+
+        "centralized 0% accuracy": 91.07,
+        "centralized 0% loss": 0.2721,
+        "centralized 0% recall": 0.9059,
+        "centralized 0% f1": 0.9048,
+        "centralized 10% accuracy": 90.15,
+        "centralized 10% loss": 0.4113,
+        "centralized 10% recall": 0.8952,
+        "centralized 10% f1": 0.8955,
+        "centralized 25% accuracy": 87.30,
+        "centralized 25% loss": 0.6062,
+        "centralized 25% recall": 0.8635,
+        "centralized 25% f1": 0.8695,
+
+        "federated 0% loss":        0.4742,
+        "federated 0% accuracy":   85.62,
+        "federated 0% precision":   0.8496,
+        "federated 0% recall":      0.8490,
+        "federated 0% f1":          0.8493,
+    
+        "federated 10% loss":       0.5100,
+        "federated 10% accuracy":  83.63,
+        "federated 10% precision":  0.8308,
+        "federated 10% recall":     0.8268,
+        "federated 10% f1":         0.8288,
+    
+        "federated 25% loss":       0.5511,
+        "federated 25% accuracy":  84.70,
+        "federated 25% precision":  0.8399,
+        "federated 25% recall":     0.8363,
+        "federated 25% f1":         0.8381
+      },
+      {
+        "epoch": 8,
+
+        "centralized 0% accuracy": 91.37,
+        "centralized 0% loss": 0.2668,
+        "centralized 0% recall": 0.9070,
+        "centralized 0% f1": 0.9070,
+        "centralized 10% accuracy": 90.07,
+        "centralized 10% loss": 0.3975,
+        "centralized 10% recall": 0.8897,
+        "centralized 10% f1": 0.8939,
+        "centralized 25% accuracy": 88.52,
+        "centralized 25% loss": 0.5776,
+        "centralized 25% recall": 0.8699,
+        "centralized 25% f1": 0.8770,
+
+        "federated 0% loss":        0.5330,
+        "federated 0% accuracy":   84.45,
+        "federated 0% precision":   0.8387,
+        "federated 0% recall":      0.8343,
+        "federated 0% f1":          0.8365,
+    
+        "federated 10% loss":       0.4879,
+        "federated 10% accuracy":  84.53,
+        "federated 10% precision":  0.8359,
+        "federated 10% recall":     0.8401,
+        "federated 10% f1":         0.8380,
+    
+        "federated 25% loss":       0.6000,
+        "federated 25% accuracy":  82.44,
+        "federated 25% precision":  0.8144,
+        "federated 25% recall":     0.8208,
+        "federated 25% f1":         0.8176
+      },
+      {
+        "epoch": 9,
+
+        "centralized 0% accuracy": 91.04,
+        "centralized 0% loss": 0.2802,
+        "centralized 0% recall": 0.8983,
+        "centralized 0% f1": 0.9017,
+        "centralized 10% accuracy": 90.30,
+        "centralized 10% loss": 0.3864,
+        "centralized 10% recall": 0.8954,
+        "centralized 10% f1": 0.8970,
+        "centralized 25% accuracy": 89.36,
+        "centralized 25% loss": 0.5480,
+        "centralized 25% recall": 0.8777,
+        "centralized 25% f1": 0.8827,
+
+        "federated 0% loss":        0.5270,
+        "federated 0% accuracy":   85.21,
+        "federated 0% precision":   0.8474,
+        "federated 0% recall":      0.8440,
+        "federated 0% f1":          0.8457,
+
+        "federated 10% loss":       0.4845,
+        "federated 10% accuracy":  85.26,
+        "federated 10% precision":  0.8469,
+        "federated 10% recall":     0.8423,
+        "federated 10% f1":         0.8446,
+
+        "federated 25% loss":       0.6218,
+        "federated 25% accuracy":  81.17,
+        "federated 25% precision":  0.8009,
+        "federated 25% recall":     0.8043,
+        "federated 25% f1":         0.8026
+      },
+      {
+        "epoch": 10,
+
+        "centralized 0% accuracy": 91.50,
+        "centralized 0% loss": 0.2673,
+        "centralized 0% recall": 0.9053,
+        "centralized 0% f1": 0.9081,
+        "centralized 10% accuracy": 90.20,
+        "centralized 10% loss": 0.3841,
+        "centralized 10% recall": 0.8997,
+        "centralized 10% f1": 0.8946,
+        "centralized 25% accuracy": 89.18,
+        "centralized 25% loss": 0.5454,
+        "centralized 25% recall": 0.8788,
+        "centralized 25% f1": 0.8851,
+
+        "federated 0% loss":        0.5695,
+        "federated 0% accuracy":   83.71,
+        "federated 0% precision":   0.8254,
+        "federated 0% recall":      0.8324,
+        "federated 0% f1":          0.8289,
+
+        "federated 10% loss":       0.4749,
+        "federated 10% accuracy":  85.09,
+        "federated 10% precision":  0.8433,
+        "federated 10% recall":     0.8433,
+        "federated 10% f1":         0.8433,
+
+        "federated 25% loss":       0.6401,
+        "federated 25% accuracy":  81.04,
+        "federated 25% precision":  0.8041,
+        "federated 25% recall":     0.7930,
+        "federated 25% f1":         0.7985
+      },
+      {
+        "epoch": 11,
+    
+        "centralized 0% accuracy": 91.50,
+        "centralized 0% loss": 0.2673,
+        "centralized 0% recall": 0.9053,
+        "centralized 0% f1": 0.9081,
+        "centralized 10% accuracy": 90.20,
+        "centralized 10% loss": 0.3841,
+        "centralized 10% recall": 0.8997,
+        "centralized 10% f1": 0.8946,
+        "centralized 25% accuracy": 89.18,
+        "centralized 25% loss": 0.5454,
+        "centralized 25% recall": 0.8788,
+        "centralized 25% f1": 0.8851,
+
+        "federated 0% loss":        0.5539,
+        "federated 0% accuracy":   84.81,
+        "federated 0% precision":   0.8426,
+        "federated 0% recall":      0.8430,
+        "federated 0% f1":          0.8428,
+    
+        "federated 10% loss":       0.4326,
+        "federated 10% accuracy":  86.59,
+        "federated 10% precision":  0.8583,
+        "federated 10% recall":     0.8587,
+        "federated 10% f1":         0.8585,
+    
+        "federated 25% loss":       0.6154,
+        "federated 25% accuracy":  81.06,
+        "federated 25% precision":  0.8034,
+        "federated 25% recall":     0.8024,
+        "federated 25% f1":         0.8029
+      },
+      {
+        "epoch": 12,
+    
+        "centralized 0% accuracy": 91.83,
+        "centralized 0% loss": 0.2644,
+        "centralized 0% recall": 0.9104,
+        "centralized 0% f1": 0.9122,
+        "centralized 10% accuracy": 90.79,
+        "centralized 10% loss": 0.3558,
+        "centralized 10% recall": 0.8972,
+        "centralized 10% f1": 0.9000,
+        "centralized 25% accuracy": 87.43,
+        "centralized 25% loss": 0.5985,
+        "centralized 25% recall": 0.8696,
+        "centralized 25% f1": 0.8727,
+
+        "federated 0% loss":        0.5506,
+        "federated 0% accuracy":   84.63,
+        "federated 0% precision":   0.8406,
+        "federated 0% recall":      0.8388,
+        "federated 0% f1":          0.8397,
+    
+        "federated 10% loss":       0.4886,
+        "federated 10% accuracy":  85.03,
+        "federated 10% precision":  0.8435,
+        "federated 10% recall":     0.8383,
+        "federated 10% f1":         0.8409,
+    
+        "federated 25% loss":       0.6747,
+        "federated 25% accuracy":  78.88,
+        "federated 25% precision":  0.7747,
+        "federated 25% recall":     0.7913,
+        "federated 25% f1":         0.7829
+        
+      },
+      {
+        "epoch": 13,
+    
+        "centralized 0% accuracy": 91.40,
+        "centralized 0% loss": 0.2634,
+        "centralized 0% recall": 0.9047,
+        "centralized 0% f1": 0.9067,
+        "centralized 10% accuracy": 90.33,
+        "centralized 10% loss": 0.3721,
+        "centralized 10% recall": 0.8934,
+        "centralized 10% f1": 0.8963,
+        "centralized 25% accuracy": 87.02,
+        "centralized 25% loss": 0.6026,
+        "centralized 25% recall": 0.8569,
+        "centralized 25% f1": 0.8655,
+
+        "federated 0% loss":        0.5640,
+        "federated 0% accuracy":   84.40,
+        "federated 0% precision":   0.8388,
+        "federated 0% recall":      0.8338,
+        "federated 0% f1":          0.8363,
+    
+        "federated 10% loss":       0.5088,
+        "federated 10% accuracy":  84.73,
+        "federated 10% precision":  0.8423,
+        "federated 10% recall":     0.8351,
+        "federated 10% f1":         0.8387,
+    
+        "federated 25% loss":       0.6846,
+        "federated 25% accuracy":  78.80,
+        "federated 25% precision":  0.7868,
+        "federated 25% recall":     0.7826,
+        "federated 25% f1":         0.7847
+      },
+      {
+        "epoch": 14,
+    
+        "centralized 0% accuracy": 91.35,
+        "centralized 0% loss": 0.2689,
+        "centralized 0% recall": 0.9080,
+        "centralized 0% f1": 0.9081,
+        "centralized 10% accuracy": 90.58,
+        "centralized 10% loss": 0.3833,
+        "centralized 10% recall": 0.8982,
+        "centralized 10% f1": 0.9003,
+        "centralized 25% accuracy": 86.82,
+        "centralized 25% loss": 0.5947,
+        "centralized 25% recall": 0.8600,
+        "centralized 25% f1": 0.8667,
+        
+        "federated 0% loss":        0.4774,
+        "federated 0% accuracy":   87.10,
+        "federated 0% precision":   0.8650,
+        "federated 0% recall":      0.8626,
+        "federated 0% f1":          0.8638,
+    
+        "federated 10% loss":       0.5293,
+        "federated 10% accuracy":  83.61,
+        "federated 10% precision":  0.8225,
+        "federated 10% recall":     0.8336,
+        "federated 10% f1":         0.8280,
+    
+        "federated 25% loss":       0.6661,
+        "federated 25% accuracy":  79.97,
+        "federated 25% precision":  0.7929,
+        "federated 25% recall":     0.7945,
+        "federated 25% f1":         0.7937
+      },
+      {
+        "epoch": 15,
+    
+        "centralized 0% accuracy": 91.14,
+        "centralized 0% loss": 0.2828,
+        "centralized 0% recall": 0.9050,
+        "centralized 0% f1": 0.9055,
+        "centralized 10% accuracy": 90.74,
+        "centralized 10% loss": 0.3793,
+        "centralized 10% recall": 0.8944,
+        "centralized 10% f1": 0.8994,
+        "centralized 25% accuracy": 90.07,
+        "centralized 25% loss": 0.5737,
+        "centralized 25% recall": 0.8948,
+        "centralized 25% f1": 0.8948,
+
+        "federated 0% loss":        0.4731,
+        "federated 0% accuracy":   87.30,
+        "federated 0% precision":   0.8672,
+        "federated 0% recall":      0.8622,
+        "federated 0% f1":          0.8647,
+    
+        "federated 10% loss":       0.5078,
+        "federated 10% accuracy":  84.55,
+        "federated 10% precision":  0.8372,
+        "federated 10% recall":     0.8388,
+        "federated 10% f1":         0.8380,
+    
+        "federated 25% loss":       0.5981,
+        "federated 25% accuracy":  82.11,
+        "federated 25% precision":  0.8152,
+        "federated 25% recall":     0.8061,
+        "federated 25% f1":         0.8106
+      }
+      ]     
+    }    
   ]
 }
