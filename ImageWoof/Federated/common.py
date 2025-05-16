@@ -38,6 +38,9 @@ class ImageWoofDataset(Dataset):
         self.synset_to_idx = {synset: idx for idx, synset in enumerate(synsets)}
         self.num_classes = len(self.synset_to_idx)
 
+        # Precompute and store all original labels
+        self.targets = [self.synset_to_idx[row] for row in self.df[self.label_column]]
+
         # Pre-select which indices to poison (only for training)
         if self.split == 'train' and self.poisoned_data_pct > 0.0:
             total = len(self.df)
@@ -46,6 +49,10 @@ class ImageWoofDataset(Dataset):
             random.seed(seed)
             random.shuffle(all_indices)
             self._poisoned_idx = set(all_indices[:n_poison])
+
+            # Apply poisoning by modifying self.targets directly
+            for idx in self._poisoned_idx:
+                self.targets[idx] = random.randint(0, self.num_classes - 1)
         else:
             self._poisoned_idx = set()
 
@@ -53,15 +60,11 @@ class ImageWoofDataset(Dataset):
         return len(self.df)
 
     def __getitem__(self, idx):
-        # Load image and original label
         row = self.df.iloc[idx]
         img_path = os.path.join(self.root_dir, row['path'])
         image = Image.open(img_path).convert("RGB")
-        label = self.synset_to_idx[row[self.label_column]]
 
-        # If this index was marked as poisoned, assign a random label
-        if self.split == 'train' and idx in self._poisoned_idx:
-            label = random.randint(0, self.num_classes - 1)
+        label = self.targets[idx]
 
         if self.transform:
             image = self.transform(image)
